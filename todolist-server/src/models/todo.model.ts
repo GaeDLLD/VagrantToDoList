@@ -20,6 +20,11 @@ export class Todo extends Entity {
   })
   desc?: string;
 
+  @property({
+    type: 'number',
+  })
+  todoListId?: number;
+
   constructor(data?: Partial<Todo>) {
     super(data);
   }
