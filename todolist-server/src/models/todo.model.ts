@@ -1,7 +1,7 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
-export class TodoList extends Entity {
+@model({settings: {strict: false}})
+export class Todo extends Entity {
   @property({
     type: 'number',
     id: true,
@@ -15,13 +15,18 @@ export class TodoList extends Entity {
   })
   title: string;
 
-  constructor(data?: Partial<TodoList>) {
+  @property({
+    type: 'string',
+  })
+  desc?: string;
+
+  constructor(data?: Partial<Todo>) {
     super(data);
   }
 }
 
-export interface TodoListRelations {
+export interface TodoRelations {
   // describe navigational properties here
 }
 
-export type TodoListWithRelations = TodoList & TodoListRelations;
+export type TodoWithRelations = Todo & TodoRelations;
