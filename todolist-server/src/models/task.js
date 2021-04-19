@@ -5,4 +5,4 @@ var TaskSchema = new mongoose.Schema({
     description: string
 }, {timestamps: true});
 
-mongoose.model('Todolist', TaskSchema);
+mongoose.model('Task', TaskSchema);
