@@ -1,0 +1,22 @@
+{
+  "name": "todolist-server",
+  "version": "1.0.0",
+  "description": "Back for the todolist app",
+  "main": "todolist-server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaeTheDev/VagrantToDoList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaeTheDev/VagrantToDoList/issues"
+  },
+  "homepage": "https://github.com/GaeTheDev/VagrantToDoList#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
