@@ -28,4 +28,19 @@ export class AppComponent {
 
   newTitle: string;
   newDescription: string;
+
+  add(): void {
+    this.tasks.push({description: this.newDescription, title: this.newTitle});
+    this.newTitle = '';
+    this.newDescription = '';
+  }
+
+  delete(task: Task): void {
+    const index = this.tasks.indexOf(task);
+    this.tasks.splice(index, 1);
+  }
+
+  clear(): void {
+    this.tasks = [];
+  }
 }
