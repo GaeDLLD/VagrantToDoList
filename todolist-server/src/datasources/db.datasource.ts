@@ -5,11 +5,11 @@ const config = {
   name: 'Db',
   connector: 'mongodb',
   url: '',
-  host: '',
-  port: 0,
+  host: 'localhost',
+  port: 27017,
   user: '',
   password: '',
-  database: '',
+  database: 'todolistdb',
   useNewUrlParser: true
 };
 
