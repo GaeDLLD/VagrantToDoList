@@ -10,26 +10,29 @@
 
     <mat-card-content>
 
-      <mat-list-item>
-        <div mat-line>
-          <mat-form-field class="title-form-field">
-            <mat-label>Title</mat-label>
-            <input matInput type="text" [(ngModel)]="newTitle">
-            <button mat-button *ngIf="newTitle" matSuffix mat-icon-button aria-label="Clear" (click)="newTitle=''">
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-form-field>
-        </div>
-        <div mat-line>
-          <mat-form-field class="description-form-field">
-            <mat-label>Description</mat-label>
-            <input matInput type="text" [(ngModel)]="newDescription">
-            <button mat-button *ngIf="newDescription" matSuffix mat-icon-button aria-label="Clear" (click)="newDescription=''">
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-form-field>
-        </div>
-      </mat-list-item>
+      <mat-list class="new-task-list">
+        <div mat-subheader>New task</div>
+        <mat-list-item>
+          <div mat-line>
+            <mat-form-field class="title-form-field">
+              <mat-label>Title</mat-label>
+              <input matInput type="text" [(ngModel)]="newTitle">
+              <button mat-button *ngIf="newTitle" matSuffix mat-icon-button aria-label="Clear" (click)="newTitle=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div mat-line>
+            <mat-form-field class="description-form-field">
+              <mat-label>Description</mat-label>
+              <input matInput type="text" [(ngModel)]="newDescription">
+              <button mat-button *ngIf="newDescription" matSuffix mat-icon-button aria-label="Clear" (click)="newDescription=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </mat-list-item>
+      </mat-list>
 
       <div class="add-button-container" *ngIf="newTitle">
         <button mat-mini-fab color="primary" aria-label="Add new task" (click)="add()">
@@ -40,9 +43,10 @@
       <mat-divider class="add-divider"></mat-divider>
 
       <mat-list>
+        <div mat-subheader>My tasks</div>
         <mat-list-item *ngFor="let task of tasks">
           <div mat-line>{{task.title}}</div>
-          <div mat-line> {{task.description}} </div>
+          <div mat-line> {{task.desc}} </div>
           <button mat-icon-button aria-label="Delete task" (click)="delete(task)">
             <mat-icon>clear</mat-icon>
           </button>

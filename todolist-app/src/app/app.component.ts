@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 export interface Task {
+  id: string;
   title: string;
-  description: string;
+  desc: string;
+  todoListId: number;
 }
 
 @Component({
@@ -10,37 +13,42 @@ export interface Task {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  tasks: Task[] = [
-    {
-      title: 'Task 1',
-      description: 'Description 1',
-    },
-    {
-      title: 'Task 2',
-      description: 'Description 2',
-    },
-    {
-      title: 'Task 3',
-      description: 'Description 3',
-    },
-  ];
+export class AppComponent implements OnInit {
+  tasks: Task[] = [];
 
   newTitle: string;
   newDescription: string;
 
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    this.http.get<Task[]>('http://localhost:3000/todos').subscribe(data => this.tasks = data);
+  }
+
   add(): void {
-    this.tasks.push({description: this.newDescription, title: this.newTitle});
+    this.http
+      .post<Task>('http://localhost:3000/todos', {title: this.newTitle, desc: this.newDescription, todoListId: 0})
+      .subscribe(data => this.tasks.push(data));
     this.newTitle = '';
     this.newDescription = '';
   }
 
   delete(task: Task): void {
-    const index = this.tasks.indexOf(task);
-    this.tasks.splice(index, 1);
+    console.log(task);
+    this.http
+      .delete<any>('http://localhost:3000/todos/' + task.id, {observe: 'response'}).subscribe(data => {
+        if (data.status === 204) {
+          const index = this.tasks.indexOf(task);
+          this.tasks.splice(index, 1);
+        }
+    });
   }
 
   clear(): void {
-    this.tasks = [];
+    this.http.delete('http://localhost:3000/todos/', {observe: 'response'}).subscribe(data => {
+      if (data.status === 204) {
+        this.tasks = [];
+      }
+    });
   }
 }
