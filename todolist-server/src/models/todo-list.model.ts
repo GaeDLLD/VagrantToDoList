@@ -4,11 +4,11 @@ import {Todo} from './todo.model';
 @model()
 export class TodoList extends Entity {
   @property({
-    type: 'number',
+    type: 'string',
     id: true,
-    generated: false,
+    mongodb: {dataType: 'ObjectId'}
   })
-  id?: number;
+  id?: string;
 
   @property({
     type: 'string',

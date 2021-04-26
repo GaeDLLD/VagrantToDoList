@@ -39,7 +39,7 @@ export class TodoListTodoController {
     },
   })
   async find(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.query.object('filter') filter?: Filter<Todo>,
   ): Promise<Todo[]> {
     return this.todoListRepository.todoList(id).find(filter);
@@ -54,7 +54,7 @@ export class TodoListTodoController {
     },
   })
   async create(
-    @param.path.number('id') id: typeof TodoList.prototype.id,
+    @param.path.string('id') id: typeof TodoList.prototype.id,
     @requestBody({
       content: {
         'application/json': {
@@ -79,7 +79,7 @@ export class TodoListTodoController {
     },
   })
   async patch(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -102,7 +102,7 @@ export class TodoListTodoController {
     },
   })
   async delete(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.query.object('where', getWhereSchemaFor(Todo)) where?: Where<Todo>,
   ): Promise<Count> {
     return this.todoListRepository.todoList(id).delete(where);
