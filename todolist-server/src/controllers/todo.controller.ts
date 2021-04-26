@@ -147,4 +147,12 @@ export class TodoController {
   async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.todoRepository.deleteById(id);
   }
+
+  @del('/todos')
+  @response(204, {
+    description: 'Todo DELETE success',
+  })
+  async delete(): Promise<void> {
+    await this.todoRepository.deleteAll();
+  }
 }
