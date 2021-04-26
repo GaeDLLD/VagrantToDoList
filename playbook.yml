@@ -1,0 +1,14 @@
+---
+- hosts: all
+  roles:
+    - role: java
+      become: yes
+  vars:
+    http_port: 80
+    
+- hosts: all
+  roles:
+    - role: jenkins
+      become: yes
+  vars:
+    http_port: 8090
