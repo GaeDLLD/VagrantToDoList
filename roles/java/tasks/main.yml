@@ -1,0 +1,29 @@
+---
+#Define the Java package to use
+- name: Define java_packages.
+  set_fact:
+    java_packages: "openjdk-11-jdk"
+  when: java_packages is not defined
+
+#Ensure man exists
+- name: Ensure 'man' directory exists.
+  file:
+    path: /usr/share/man/man1
+    state: directory
+    recurse: true
+  when:
+    - "ansible_distribution == 'Ubuntu'"
+    - "ansible_distribution_major_version | int >= 18"
+
+- name: Ensure Java is installed.
+  apt:
+    name: "{{ java_packages }}"
+    state: present
+  
+  # Environment setup.
+- name: Set JAVA_HOME if configured.
+  template:
+    src: java_home.sh.j2
+    dest: /etc/profile.d/java_home.sh
+    mode: 0644
+  when: java_home is defined and java_home
