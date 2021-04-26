@@ -43,7 +43,8 @@
       <mat-divider class="add-divider"></mat-divider>
 
       <mat-list>
-        <div mat-subheader>My tasks</div>
+        <div mat-subheader *ngIf="tasks.length > 0">My tasks</div>
+        <div mat-subheader *ngIf="tasks.length === 0">Task list empty</div>
         <mat-list-item *ngFor="let task of tasks">
           <div mat-line>{{task.title}}</div>
           <div mat-line> {{task.desc}} </div>
