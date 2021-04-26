@@ -32,7 +32,7 @@
       </mat-list-item>
 
       <div class="add-button-container" *ngIf="newTitle">
-        <button mat-mini-fab color="primary" aria-label="Add new task">
+        <button mat-mini-fab color="primary" aria-label="Add new task" (click)="add()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
@@ -43,7 +43,7 @@
         <mat-list-item *ngFor="let task of tasks">
           <div mat-line>{{task.title}}</div>
           <div mat-line> {{task.description}} </div>
-          <button mat-icon-button aria-label="Delete task">
+          <button mat-icon-button aria-label="Delete task" (click)="delete(task)">
             <mat-icon>clear</mat-icon>
           </button>
         </mat-list-item>
@@ -52,7 +52,7 @@
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-actions>
-      <button mat-button color="warn">CLEAR ALL</button>
+      <button mat-button color="warn" (click)="clear()">CLEAR ALL</button>
     </mat-card-actions>
   </mat-card>
 </div>
