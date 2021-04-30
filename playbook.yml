@@ -1,11 +1,13 @@
 ---
+#Java installation
 - hosts: all
   roles:
     - role: java
       become: yes
   vars:
     http_port: 80
-    
+
+#Jenkins installation and configuration
 - hosts: all
   roles:
     - role: jenkins
