@@ -18,6 +18,7 @@
 - name: Ensure Java is installed.
   apt:
     name: "{{ java_packages }}"
+    update_cache: true
     state: present
   
   # Environment setup.
