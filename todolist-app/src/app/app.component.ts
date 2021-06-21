@@ -1,12 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-
-export interface Task {
-  id: string;
-  title: string;
-  desc: string;
-  todoListId: number;
-}
+import { Task } from './model/task';
 
 @Component({
   selector: 'app-root',
