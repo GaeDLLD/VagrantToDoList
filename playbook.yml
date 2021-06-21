@@ -13,4 +13,4 @@
     - role: jenkins
       become: yes
   vars:
-    http_port: 8090
+    http_port: 8080

@@ -70,7 +70,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "base"
-  config.vm.network "forwarded_port", guest: 8080, host: 8090
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.box = "generic/ubuntu2004"
   
   config.vm.provider "virtualbox" do |vb|

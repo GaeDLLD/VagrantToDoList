@@ -3,7 +3,7 @@
 - name: Include OS-Specific variables
   include_vars: "vars.yml"
 
-# Setup/install tasks.
+# Jenkins install setup.
 - include_tasks: setup.yml
 
 # Configure Jenkins init settings.
@@ -39,10 +39,11 @@
   delay: 10
   check_mode: false
 
-- name: Remove Jenkins security init scripts after first startup.
-  file:
-    path: "{{ jenkins_home }}/init.groovy.d/basic-security.groovy"
-    state: absent
+# Good for security when in prod environnement, but not that usefull in dev
+#- name: Remove Jenkins security init scripts after first startup.
+#  file:
+#    path: "{{ jenkins_home }}/init.groovy.d/basic-security.groovy"
+#    state: absent
 
 # Update Jenkins and install configured plugins.
 - include_tasks: plugins.yml

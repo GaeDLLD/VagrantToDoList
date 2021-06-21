@@ -75,6 +75,10 @@
 
 - name: Trigger handlers immediately in case Jenkins was installed
   meta: flush_handlers
+  
+- name: Print user and password
+  ansible.builtin.debug:
+    msg: Username {{ jenkins_admin_username }} Password {{ jenkins_admin_password }}
 
 - name: Immediately restart Jenkins on http or user changes.
   service: name=jenkins state=restarted

@@ -43,4 +43,4 @@
   apt:
     name: jenkins
     state: "{{ jenkins_package_state }}"
-  notify: configure default users
+  notify: Copy basic security
